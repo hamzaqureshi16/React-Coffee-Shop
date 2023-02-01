@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom'
 import logo from '../assets/img/new logo.png';
 import carticon from '../assets/img/cart.svg'
 
+
 export default function Navbar() {
   return (
    
     <div>
       
-      <nav className="navbar navbar-expand-lg bg-dark bg-transparent" style={{minHeight:'10vh'}}>
+  <nav className="navbar navbar-expand-lg bg-transparent" style={{minHeight:'8vh'}}>
   <div className="container-fluid ">
   <img className='mb-2 App-logo' src={logo} width='50px' height='50px' alt="" />
     <h1 className="navbar-brand bg-dark rounded text-light p-2" >  
