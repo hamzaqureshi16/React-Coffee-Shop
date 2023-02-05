@@ -5,6 +5,9 @@
 * License: https://bootstrapmade.com/license/
 */
 
+import $ from 'jquery';
+import Isotope from 'isotope-layout';
+
 const BuyNow = (id) => {
   AddtoCart(id);
   window.parent.location.href = '../cart.html';
