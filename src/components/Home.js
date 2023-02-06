@@ -2,6 +2,10 @@ import React from 'react';
 import bgimg from '../assets/img/Coffee-Background1.jpg';
 import { Link } from 'react-router-dom';
 import Aboutus from './Aboutus';
+import TableReservationForm from './TableReservationForm';
+import Reviews from './Reviews';
+import Menu from './Menu';
+import Contactus from './Contactus';
 
 
 //make a style obj
@@ -55,6 +59,12 @@ const Home = () => {
       </header>
 
       <Aboutus />
+      <Menu />
+      <Reviews />
+      <TableReservationForm />
+      
+      <Contactus />
+
     </div>
   )
 }

@@ -6,6 +6,8 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Aboutus from './components/Aboutus';
 import Menu from './components/Menu';
+import Reviews from './components/Reviews';
+import Contactus from './components/Contactus';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route path='/reservation' element={<TableReservationForm/>}></Route>
         <Route path='/about' element={<Aboutus/>}></Route>
         <Route path='/menu' element={<Menu/>}></Route>
+        <Route path='/contact' element={<Contactus/>}></Route>
+        <Route path='/reviews' element={<Reviews/>}></Route>
       </Routes>
        
       
