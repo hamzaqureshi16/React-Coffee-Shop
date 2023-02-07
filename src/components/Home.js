@@ -5,7 +5,7 @@ import Aboutus from './Aboutus';
 import TableReservationForm from './TableReservationForm';
 import Reviews from './Reviews';
 import Menu from './Menu';
-import Contactus from './Contactus';
+import Contactus from './Contactus'; 
 
 
 //make a style obj

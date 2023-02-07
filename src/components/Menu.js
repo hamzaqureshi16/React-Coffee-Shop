@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import cappuchino from "../assets/img/flatwhite-coffee.jpg";
+ 
 
 const menuitemstyle = {
   fontSize: "0.9rem",
@@ -69,10 +70,9 @@ export default function Menu() {
       <div className="col-lg-6 menu-item filter-starters" style={menuitemstyle}>
         <img
           src={cappuchino}
-          className="rounded-circle"
+          className="menu-img rounded-circle"
           height="85px"
           width="85px"
-          class="menu-img"
           alt=""
         />
         <div className="menu-content">

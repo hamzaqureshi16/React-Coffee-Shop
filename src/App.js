@@ -8,6 +8,7 @@ import Aboutus from './components/Aboutus';
 import Menu from './components/Menu';
 import Reviews from './components/Reviews';
 import Contactus from './components/Contactus';
+import LoginForm from './components/LoginForm';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path='/menu' element={<Menu/>}></Route>
         <Route path='/contact' element={<Contactus/>}></Route>
         <Route path='/reviews' element={<Reviews/>}></Route>
+        <Route path='/login' element={<LoginForm/>}></Route>
       </Routes>
        
       

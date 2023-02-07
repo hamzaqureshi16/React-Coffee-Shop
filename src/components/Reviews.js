@@ -1,7 +1,7 @@
 import React from 'react'
 import reviewsbg from '../assets/img/review.jpg';
 import star from '../assets/img/star-01.png';
-import emptystar from '../assets/img/star_empty-01.png';
+import emptystar from '../assets/img/star_empty-01.png'; 
 
 export default function Reviews() {
   return (
