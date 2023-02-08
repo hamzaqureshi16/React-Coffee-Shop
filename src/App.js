@@ -8,6 +8,7 @@ import Aboutus from './components/Aboutus';
 import Menu from './components/Menu';
 import Reviews from './components/Reviews';
 import Contactus from './components/Contactus';
+import SignUpForm from './components/SignUpForm';
 import LoginForm from './components/LoginForm';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path='/contact' element={<Contactus/>}></Route>
         <Route path='/reviews' element={<Reviews/>}></Route>
         <Route path='/login' element={<LoginForm/>}></Route>
+        <Route path='/signup' element={<SignUpForm/>}></Route>
       </Routes>
        
       

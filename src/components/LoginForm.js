@@ -13,13 +13,13 @@ export default function LoginForm() {
 
 
   return (
-    <div className='text-dark loginpage'>
+    <div className='loginpage'>
         <div id="topnav">
-          <input type="button" className="darkmode" onClick={(e) => Dark(e.target)} value='Dark Mode' id="darkmode"></input>
+          <input type="button" className="darkmode" style={{height:'50px'}} onClick={(e) => Dark(e.target)} value='Dark Mode' id="darkmode"></input>
           <img src={coffeeimg} alt="" />
         </div>
         <h1>Login</h1>
-        <form  method="post" className="form" id="loginform">
+        <form  method="post" className="text-dark form" id="loginform">
           <label htmlFor="email">Email</label>
           <input type="email" id="email" name="email" required />
           <br />
