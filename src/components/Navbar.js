@@ -2,8 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../assets/img/new logo.png';
 import carticon from '../assets/img/cart.svg'
+import '../assets/css/FrontPage.css';
  
-
 
 export default function Navbar() {
   return (
@@ -40,14 +40,11 @@ export default function Navbar() {
                  
          </li> 
       </ul>
-
-
-      <div>
-        <Link to='/login'><button>login</button></Link>
-        <input type="button" value="Login" className="btn btn-success ml-auto rounded" />
-        <input type="button" value="Sign Up" className='btn btn-success rounded ' style={{marginLeft:"5px"}} />
+ 
+        <Link to='/login'><input type="button" value="Login" className="btn btn-success ml-auto rounded" /></Link>
+        <Link to='/signup' style={{padding:'2px'}} ><input type="button" value="Sign Up" className='btn btn-success rounded' style={{marginLeft:"5px"}} /></Link>
         <img src={carticon} width='30px' height='30px' alt="" style={{marginLeft:'10px'}} />
-      </div>
+       
     </div>
   </div>
 </nav>

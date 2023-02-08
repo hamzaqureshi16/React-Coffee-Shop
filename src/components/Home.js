@@ -6,6 +6,7 @@ import TableReservationForm from './TableReservationForm';
 import Reviews from './Reviews';
 import Menu from './Menu';
 import Contactus from './Contactus'; 
+import '../assets/css/FrontPage.css';
 
 
 //make a style obj

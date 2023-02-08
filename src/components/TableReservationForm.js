@@ -1,4 +1,5 @@
-import React from 'react' 
+import React from 'react';
+import '../assets/css/FrontPage.css';
 
 
 export default function TableReservationForm() {

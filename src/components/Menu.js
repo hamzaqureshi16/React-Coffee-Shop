@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import cappuchino from "../assets/img/flatwhite-coffee.jpg";
- 
+import '../assets/css/FrontPage.css';
 
 const menuitemstyle = {
   fontSize: "0.9rem",

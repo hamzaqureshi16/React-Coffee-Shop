@@ -1,15 +1,21 @@
-import React from 'react'
-import coffeeimg from '../assets/img/CoffeeLogo.png' 
+import React from 'react';
+import {Dark} from '../assets/js/DarkMode';
+import '../assets/css/LoginStyle.css';
+import coffeeimg from '../assets/img/CoffeeLogo.png'; 
+
 
 var CheckUser = () =>{
    console.log('login');
 }
  
-export default function LoginForm() {
+export default function LoginForm() { 
+
+
+
   return (
-    <div>
+    <div className='text-dark loginpage'>
         <div id="topnav">
-          <button className="darkmode" onclick="Dark(this)" id="darkmode">Dark Mode</button>
+          <input type="button" className="darkmode" onClick={(e) => Dark(e.target)} value='Dark Mode' id="darkmode"></input>
           <img src={coffeeimg} alt="" />
         </div>
         <h1>Login</h1>

@@ -1,6 +1,8 @@
 import React from 'react';
 import bg2 from '../assets/img/Coffee-Background2.jpg';
 import bg3 from '../assets/img/Coffee-Background3.jpg';
+import '../assets/css/FrontPage.css';
+
 
 export default function Aboutus() {
   return (
