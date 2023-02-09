@@ -1,16 +1,34 @@
 import React from 'react';
 import '../assets/css/LoginStyle.css';
 import {Dark} from '../assets/js/DarkMode';
+import { checkIfEmpty, verifyNumber, verifyAddres, verifyPassword, VerifyCard, verifyExpiry, verifyCVV } from '../assets/js/validations';
 
+const RegisterUser = (e) => {
+  if(checkIfEmpty()){
+    console.log("not empty");
+    console.log("num"+verifyNumber(document.getElementById('contact')));
+    console.log("pass"+verifyPassword());
+    console.log("add"+verifyAddres());
+    console.log("card"+VerifyCard(document.getElementById('card')));
+    console.log("exp"+verifyExpiry(document.getElementById('expiry')));
+    console.log("cvv"+verifyCVV(document.getElementById('cvv')));
+    
+    if(verifyNumber(document.getElementById('contact')) && verifyPassword() && verifyAddres() && VerifyCard(document.getElementById('card')) && verifyExpiry(document.getElementById('expiry'))
+    && verifyCVV(document.getElementById('cvv'))){
+      console.log("hello g");
+    }
+}
+}
 export default function SignUpForm() {
+  
   return (
     <div className='loginpage text-dark'>
     <div id="topnav">
-      <button className="darkmode" style={{height:'50px'}} onClick={(e) =>Dark(e.target)} value='Dark Mode' id="darkmode"></button>
+      <input type='button' className="darkmode" style={{height:'50px'}} onClick={(e) =>Dark(e.target)} value='Dark Mode' id="darkmode"></input>
       <img src="./assets//img//CoffeeLogo.png" alt="" />
     </div>
     <h1>Sign Up</h1>
-    <form  method="POST" className="form" id="loginform">
+    <div  method="POST" className="form" id="loginform">
       <label htmlFor="username">Username</label>
       <input type="text" name="username" id="username" />
       <label htmlFor="password">Password</label>
@@ -38,8 +56,8 @@ export default function SignUpForm() {
       <input type="date" name="expiry" id="expiry" required />
       <label htmlFor="cvv">CVV</label>
       <input type="number" min={10} placeholder="yyy" name="cvv" id="cvv" required />
-      <input type="submit" defaultValue="Sign Up" id="submit" />
-    </form>
+      <input type="submit" defaultValue="Sign Up" id="submit" onClick={(e) => RegisterUser(e)} />
+    </div>
   </div>
   )
 }

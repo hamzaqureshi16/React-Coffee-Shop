@@ -4,8 +4,9 @@ import '../assets/css/LoginStyle.css';
 import coffeeimg from '../assets/img/CoffeeLogo.png'; 
 
 
-var CheckUser = () =>{
-   console.log('login');
+const CheckUser = (e) =>{
+  console.log(document.getElementById("email"));
+  console.log(document.getElementById("password"));
 }
  
 export default function LoginForm() { 
@@ -19,15 +20,15 @@ export default function LoginForm() {
           <img src={coffeeimg} alt="" />
         </div>
         <h1>Login</h1>
-        <form  method="post" className="text-dark form" id="loginform">
+        <div  method="post" className="text-dark form" id="loginform">
           <label htmlFor="email">Email</label>
           <input type="email" id="email" name="email" required />
           <br />
           <label htmlFor="password">Password</label>
           <input type="password" id="password" name="password" required />
           <br />
-          <input type="submit" onSubmit={CheckUser()} defaultValue="Login" id="Login" />
-        </form>
+          <input type="submit" onClick={(e)=>CheckUser(e)} defaultValue="Login" id="Login" />
+        </div>
       </div>
   )
 }
