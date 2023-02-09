@@ -1,0 +1,103 @@
+.loginpage li{
+      
+    display: inline;
+    padding-left: 100px;
+    margin: 10px;
+    }
+   
+.loginpage  body{
+        background-color: #ddd;
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+   
+.loginpage  ul{
+        margin-top: -5%;
+          display: flex;
+          justify-content: center;
+     }
+     
+.loginpage img{
+            
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 13%;
+          
+           
+        }
+        
+
+       
+.loginpage  .form{
+            margin: 0 auto;
+            width: 50%;
+            padding: 20px;
+            background-color: #f1f1f1;
+            border-radius: 10px;
+            margin-top: 2%;
+            box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+
+        }
+
+        
+.loginpage  .form label{
+            display: block;
+            text-align: center;
+            margin: 10px;
+        }
+     
+.loginpage  .form input,select{
+            border-radius: 5em;
+            display: block;
+            margin: 0 auto;
+            width: 60%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+            
+        }
+.loginpage .form input[type="submit"]{
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 20%;
+            margin-top: 2%;
+        }
+    
+.loginpage  h1{
+            text-align: center;
+           
+        }
+.loginpage   .form input[type="submit"]:hover{
+            background-color: #45a049;
+        }
+.loginpage   .form input[type="submit"]:active{
+            background-color: #45a049;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+.loginpage  .form input:focus, select:focus{
+            background-color: #ddd;
+            outline: none;
+        }
+   
+    
+.loginpage   .darkmode{
+        position: absolute;
+        margin-top: 2%;
+        margin-left: 1%;
+        width: 10%;
+        height: 7%;
+        border-radius: 10em;
+        background-color: #000019;
+        color: white;
+      }
+.loginpage .form input[type="submit"]:hover{
+            background-color: #000019;
+        }
+
+        
