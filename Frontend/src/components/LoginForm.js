@@ -2,11 +2,28 @@ import React from 'react';
 import {Dark} from '../assets/js/DarkMode';
 import '../assets/css/LoginStyle.css';
 import coffeeimg from '../assets/img/CoffeeLogo.png'; 
+import {login} from '../Service/Api'; 
+
 
 
 const CheckUser = (e) =>{
-  console.log(document.getElementById("email"));
-  console.log(document.getElementById("password"));
+  e.preventDefault();
+  
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const data = {email,password};
+  console.log('data in checkuser'+data); 
+  login(data).then((res) => {
+    if(res.data === 'found'){
+      window.location.href = '/home';
+     alert('found'); 
+   
+     }
+     else{
+        alert('not found');
+     }
+     
+  })
 }
  
 export default function LoginForm() { 

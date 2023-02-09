@@ -2,6 +2,7 @@ import React from 'react';
 import '../assets/css/LoginStyle.css';
 import {Dark} from '../assets/js/DarkMode';
 import { checkIfEmpty, verifyNumber, verifyAddres, verifyPassword, VerifyCard, verifyExpiry, verifyCVV } from '../assets/js/validations';
+import { register } from '../Service/Api';
 
 const RegisterUser = (e) => {
   if(checkIfEmpty()){
@@ -15,7 +16,40 @@ const RegisterUser = (e) => {
     
     if(verifyNumber(document.getElementById('contact')) && verifyPassword() && verifyAddres() && VerifyCard(document.getElementById('card')) && verifyExpiry(document.getElementById('expiry'))
     && verifyCVV(document.getElementById('cvv'))){
-      console.log("hello g");
+      console.log("all true");
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const email = document.getElementById('email').value;
+      const branch = document.getElementById('branch').value;
+      const contact = document.getElementById('contact').value;
+      const address = document.getElementById('address').value;
+      const card = document.getElementById('card').value;
+      const expiry = document.getElementById('expiry').value;
+      const cvv = document.getElementById('cvv').value;
+      const data = {username,password,email,branch,contact,address,card,expiry,cvv};
+      console.log(data);
+      register(data).then((res) => {
+        if(res.data === 'saved'){
+          //clear all inputs
+          document.getElementById('username').value = '';
+          document.getElementById('password').value = '';
+          document.getElementById('confirm_password').value = '';
+          document.getElementById('email').value = '';
+          document.getElementById('contact').value = '';
+          document.getElementById('address').value = '';
+          document.getElementById('card').value = '';
+
+          document.getElementById('expiry').value = '';
+          document.getElementById('cvv').value = '';
+          alert('User Registered Successfully');
+
+        }
+        else{
+          alert(res.data);
+        }
+
+      })
     }
 }
 }
