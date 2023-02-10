@@ -31,18 +31,9 @@ const RegisterUser = (e) => {
       console.log(data);
       register(data).then((res) => {
         if(res.data === 'saved'){
-          //clear all inputs
-          document.getElementById('username').value = '';
-          document.getElementById('password').value = '';
-          document.getElementById('confirm_password').value = '';
-          document.getElementById('email').value = '';
-          document.getElementById('contact').value = '';
-          document.getElementById('address').value = '';
-          document.getElementById('card').value = '';
-
-          document.getElementById('expiry').value = '';
-          document.getElementById('cvv').value = '';
+           
           alert('User Registered Successfully');
+          window.location.href = '/login';
 
         }
         else{
