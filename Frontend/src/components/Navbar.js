@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom'
 import logo from '../assets/img/new logo.png';
 import carticon from '../assets/img/cart.svg'
 import '../assets/css/FrontPage.css';
+import { ReactPropTypes } from 'react';
  
 
-export default function Navbar() {
+export default function Navbar(props) {
   return (
    
     <div>
@@ -40,10 +41,17 @@ export default function Navbar() {
                  
          </li> 
       </ul>
- 
-        <Link to='/login'><input type="button" value="Login" className="btn btn-success ml-auto rounded" /></Link>
-        <Link to='/signup' style={{padding:'2px'}} ><input type="button" value="Sign Up" className='btn btn-success rounded' style={{marginLeft:"5px"}} /></Link>
-        <img src={carticon} width='30px' height='30px' alt="" style={{marginLeft:'10px'}} />
+        {props.isLoggedIn ? (
+          <div className="d-flex">
+            <h5 className="text-light fs-4 pt-2">Welcome {props.UserName}</h5>
+            <Link to='/logout'><input type="button" value="Logout" className="btn btn-success ml-auto rounded" /></Link>
+          </div>
+        ) : (
+          <div className="d-flex">
+            <Link to='/login'><input type="button" value="Login" className="btn btn-success ml-auto rounded" /></Link>
+            <Link to='/signup' style={{padding:'2px'}} ><input type="button" value="Sign Up" className='btn btn-success rounded' style={{marginLeft:"5px"}} /></Link>
+        </div>
+        )}
        
     </div>
   </div>
@@ -54,3 +62,10 @@ export default function Navbar() {
                 
   
 }
+
+ 
+Navbar.defaultProps = {
+  isLoggedIn: false,
+  UserName: '',
+};
+

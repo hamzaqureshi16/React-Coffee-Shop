@@ -14,7 +14,7 @@ import LoginForm from './components/LoginForm';
 function App() {
   return (
     <div className=' bg-dark' >
-      <Navbar></Navbar>
+      <Navbar ></Navbar>
       
       <Routes>
         <Route path='/home' index element={<Home/>}></Route>
