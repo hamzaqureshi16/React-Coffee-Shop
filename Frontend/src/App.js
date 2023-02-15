@@ -10,20 +10,32 @@ import Reviews from './components/Reviews';
 import Contactus from './components/Contactus';
 import SignUpForm from './components/SignUpForm';
 import LoginForm from './components/LoginForm';
-import { useState , useEffect} from 'react';
+import { useState } from 'react'; 
+import { useNavigate } from 'react-router-dom';
+import Cart from './components/Cart';
+
+
+
+
 function App() {
   const [LoggedIn,setLoggedIn] = useState(false);
-  const [UserName,setUserName] = useState('');
-useEffect(()=>console.log(LoggedIn+' '+UserName),[]);
+  const [UserName,setUserName] = useState('');  
+  const navigate = useNavigate();
 
-function handleLogin(username) {
+const handleLogin = (username) => {
   setLoggedIn(true);
   setUserName(username);
+  navigate('/home');
 }
-  const handleLogout = () => {setLoggedIn(false); setUserName('');}
+
+const handleLogout = () => {
+  setLoggedIn(false);
+  setUserName('');
+ 
+}
   return (
     <div className=' bg-dark' >
-      <Navbar isLoggedIn = {LoggedIn}></Navbar>
+      <Navbar isLoggedIn = {LoggedIn} UserName={UserName} logout = {handleLogout}></Navbar>
       
       <Routes>
         <Route path='/home' index element={<Home/>}></Route>
@@ -34,6 +46,7 @@ function handleLogin(username) {
         <Route path='/reviews' element={<Reviews/>}></Route>
         <Route path='/login' element={<LoginForm login = {handleLogin} />}></Route>
         <Route path='/signup' element={<SignUpForm/>}></Route>
+        <Route path='/cart' element={<Cart></Cart>}></Route>
       </Routes>
        
       

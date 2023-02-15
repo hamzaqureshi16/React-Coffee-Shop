@@ -20,7 +20,6 @@ export default function LoginForm(props) {
     login(data).then((res) => {
       if(res.data === 'found'){
         props.login(username);
-        window.location.href = '/home';
        
      
        }

@@ -6,7 +6,7 @@ import {RegisterRouter, LoginRouter} from './Routes/reactcoffeeshop.js';
 
 
 const app = express();
-const url = 'mongodb+srv://hamza:IY8SZWJgmPHpi2Py@cluster0.96cge86.mongodb.net/?retryWrites=true&w=majority';
+const url = '';
 
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log("DB connected"));
 app.listen(3000);

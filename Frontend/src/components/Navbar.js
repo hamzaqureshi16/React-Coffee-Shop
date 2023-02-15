@@ -42,8 +42,8 @@ export default function Navbar(props) {
       </ul>
         {props.isLoggedIn ? (
           <div className="d-flex">
-            <h5 className="text-light fs-4 pt-2">Welcome {props.UserName}</h5>
-            <Link to='/logout'><input type="button" value="Logout" className="btn btn-success ml-auto rounded" /></Link>
+            <h5 className="text-light fs-4 pt-2" >Welcome {props.UserName}</h5>
+            <input type="button" value="Logout" style={{marginLeft:'7px'}} onClick={()=>props.logout()} className="btn btn-success ml-auto rounded" /> 
           </div>
         ) : (
           <div className="d-flex">
@@ -51,6 +51,7 @@ export default function Navbar(props) {
             <Link to='/signup' style={{padding:'2px'}} ><input type="button" value="Sign Up" className='btn btn-success rounded' style={{marginLeft:"5px"}} /></Link>
         </div>
         )}
+        <Link to='/cart' className='p-1 '><img src={carticon} id='carticon' width='30px' height='30px' alt="" /></Link>
        
     </div>
   </div>
