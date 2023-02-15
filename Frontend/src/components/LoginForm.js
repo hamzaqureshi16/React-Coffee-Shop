@@ -5,30 +5,31 @@ import coffeeimg from '../assets/img/CoffeeLogo.png';
 import {login} from '../Service/Api'; 
 
 
-
-const CheckUser = (e) =>{
-  e.preventDefault();
-  
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-  const data = {email,password};
-  console.log('data in checkuser'+data); 
-  login(data).then((res) => {
-    if(res.data === 'found'){
-      window.location.href = '/home';
-     alert('found'); 
-   
-     }
-     else{
-        alert('not found');
-     }
-     
-  })
-}
  
-export default function LoginForm() { 
+export default function LoginForm(props) { 
 
 
+
+  const CheckUser = (e) =>{
+    e.preventDefault();
+    
+    const username = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const data = {username,password};
+    console.log('data in checkuser'+data); 
+    login(data).then((res) => {
+      if(res.data === 'found'){
+        props.login(username);
+        window.location.href = '/home';
+       
+     
+       }
+       else{
+          alert('not found');
+       }
+       
+    })
+  }
 
   return (
     <div className='loginpage'>
@@ -38,8 +39,8 @@ export default function LoginForm() {
         </div>
         <h1>Login</h1>
         <div  method="post" className="text-dark form" id="loginform">
-          <label htmlFor="email">Email</label>
-          <input type="email" id="email" name="email" required />
+          <label htmlFor="username">User Name</label>
+          <input type="text" id="email" name="email" required />
           <br />
           <label htmlFor="password">Password</label>
           <input type="password" id="password" name="password" required />

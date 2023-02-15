@@ -2,11 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../assets/img/new logo.png';
 import carticon from '../assets/img/cart.svg'
-import '../assets/css/FrontPage.css';
-import { ReactPropTypes } from 'react';
+import '../assets/css/FrontPage.css'; 
  
 
-export default function Navbar(props) {
+export default function Navbar(props) { 
   return (
    
     <div>

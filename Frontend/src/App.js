@@ -10,11 +10,20 @@ import Reviews from './components/Reviews';
 import Contactus from './components/Contactus';
 import SignUpForm from './components/SignUpForm';
 import LoginForm from './components/LoginForm';
-
+import { useState , useEffect} from 'react';
 function App() {
+  const [LoggedIn,setLoggedIn] = useState(false);
+  const [UserName,setUserName] = useState('');
+useEffect(()=>console.log(LoggedIn+' '+UserName),[]);
+
+function handleLogin(username) {
+  setLoggedIn(true);
+  setUserName(username);
+}
+  const handleLogout = () => {setLoggedIn(false); setUserName('');}
   return (
     <div className=' bg-dark' >
-      <Navbar ></Navbar>
+      <Navbar isLoggedIn = {LoggedIn}></Navbar>
       
       <Routes>
         <Route path='/home' index element={<Home/>}></Route>
@@ -23,7 +32,7 @@ function App() {
         <Route path='/menu' element={<Menu/>}></Route>
         <Route path='/contact' element={<Contactus/>}></Route>
         <Route path='/reviews' element={<Reviews/>}></Route>
-        <Route path='/login' element={<LoginForm/>}></Route>
+        <Route path='/login' element={<LoginForm login = {handleLogin} />}></Route>
         <Route path='/signup' element={<SignUpForm/>}></Route>
       </Routes>
        

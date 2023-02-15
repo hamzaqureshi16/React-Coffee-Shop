@@ -7,7 +7,7 @@ const LoginRouter = express.Router();
 LoginRouter.post('/', async (req, res) =>{ 
     const data = req.body;
     try {
-        await register.findOne({email:data.email}).then( (result) =>{
+        await register.findOne({username:data.email} && {password:data.password} ).then( (result) =>{
             if(result === null){
                 res.json('not found');
             }
