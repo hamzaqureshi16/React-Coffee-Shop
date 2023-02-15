@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
-import cappuchino from "../assets/img/flatwhite-coffee.jpg";
 import '../assets/css/FrontPage.css';
+import { useState } from "react";
+import  {getCatalog} from '../Service/Api'
 
 const menuitemstyle = {
   fontSize: "0.9rem",
@@ -18,30 +19,17 @@ const BuyNow = () =>{};
 const AddtoCart = () =>{};
 
 export default function Menu() {
-  useEffect(() => {}, []);
-  const ProductCatalog = [
-    {
-      id: 1,
-      name: "Flat White",
-      price: "$4.50",
-      ingredients: "Espresso, steamed milk",
-      category: "starters",
-    },
-    {
-      id: 2,
-      name: "Latte",
-      price: "$4.75",
-      ingredients: "Espresso, steamed milk, foam",
-      category: "salads",
-    },
-    {
-      id: 3,
-      name: "Mocha",
-      price: "$5.00",
-      ingredients: "Espresso, steamed milk, chocolate syrup, foam",
-      category: "salads",
-    },
-  ];
+  const [ProductCatalog,setProductCatalog] = useState([]);
+
+  useEffect(() => {
+    console.log("useEffect");
+    getProducts()}, []);
+
+  const getProducts = async () =>{
+    const result = await getCatalog();
+    console.log(result.data);
+    setProductCatalog(result.data);
+  }
 
   return (
     <div>
@@ -69,7 +57,7 @@ export default function Menu() {
     {ProductCatalog.map((item, index) => (
       <div className="col-lg-6 menu-item filter-starters" style={menuitemstyle}>
         <img
-          src={cappuchino}
+          src={process.env.PUBLIC_URL+item.url}
           className="menu-img rounded-circle"
           height="85px"
           width="85px"
@@ -77,12 +65,12 @@ export default function Menu() {
         />
         <div className="menu-content">
           <a href="/">{item.name}</a>
-          <span>{item.price}</span>
+          <span>PKR {item.price}</span>
         </div>
         <div className="menu-ingredients">{item.ingredients}</div>
         &nbsp; &nbsp;
         <button className="bg-success rounded" onClick={() => BuyNow(item.id)}>
-          buy
+          Buy Now
         </button>
         <button className="bg-primary rounded" onClick={() => AddtoCart(item.id)}>
           Add to cart

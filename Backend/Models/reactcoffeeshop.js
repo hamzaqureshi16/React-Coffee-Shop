@@ -15,5 +15,15 @@ const RegisterUser = mongoose.Schema(
 
 );
 
+const Catalog = mongoose.Schema({
+    id:String,
+    name:String,
+    price:String,
+    url:String,
+    categoy:String,
+    ingredients:String
+    
+});
 
+export const catalog = mongoose.model('ProductCatalog',Catalog);
 export const register = mongoose.model('RegisteredUsers',RegisterUser);
