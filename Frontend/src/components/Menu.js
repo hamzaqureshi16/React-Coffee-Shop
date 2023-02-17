@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import '../assets/css/FrontPage.css';
 import { useState } from "react";
+import { addCatalog } from "../Service/Api";
 import  {getCatalog} from '../Service/Api'
+
 
 const menuitemstyle = {
   fontSize: "0.9rem",
@@ -13,7 +15,8 @@ const menuitemstyle = {
   letterSpacing: "0.2rem",
   border: "none",
   borderRadius: "0.5rem",
-};
+}; 
+
 
 const BuyNow = () =>{};
 const AddtoCart = () =>{};

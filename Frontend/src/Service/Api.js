@@ -13,3 +13,5 @@ export const register = async (Data) => {
 export const getCatalog = async () => {
     return await axios.get(`${url}/catalog`);
 }
+
+

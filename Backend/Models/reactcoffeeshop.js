@@ -25,5 +25,5 @@ const Catalog = mongoose.Schema({
     
 });
 
-export const catalog = mongoose.model('ProductCatalog',Catalog);
+export const catalog = mongoose.model('productcatalog',Catalog);
 export const register = mongoose.model('RegisteredUsers',RegisterUser);

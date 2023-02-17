@@ -5,6 +5,7 @@ const RegisterRouter = express.Router();
 const LoginRouter = express.Router();
 const CatalogRouter = express.Router();
 
+
 CatalogRouter.get('/',async (req,res) =>{
     //get all the data from the ProductCatalog collection
     //log the names of all the collections in the DB
