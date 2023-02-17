@@ -1,5 +1,15 @@
 import mongoose, { mongo } from "mongoose";
 
+
+const Cart = mongoose.Schema({
+    id:String,
+    name:String,
+    price:Number,
+    url:String,
+    categoy:String,
+    ingredients:String,
+    quantity:Number
+})
 const RegisterUser = mongoose.Schema(
     {
         username: String,
@@ -27,3 +37,4 @@ const Catalog = mongoose.Schema({
 
 export const catalog = mongoose.model('productcatalog',Catalog);
 export const register = mongoose.model('RegisteredUsers',RegisterUser);
+export const cart = mongoose.model('cart',Cart);

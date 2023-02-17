@@ -14,4 +14,10 @@ export const getCatalog = async () => {
     return await axios.get(`${url}/catalog`);
 }
 
+export const SendtoCart = async (Data) =>{
+    return await axios.post(`${url}/menu`,Data);
+}
 
+export const getCart = async () =>{
+    return await axios.get(`${url}/cart`);
+}

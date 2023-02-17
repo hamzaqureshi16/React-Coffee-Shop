@@ -16,12 +16,9 @@ export default function LoginForm(props) {
     const username = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const data = {username,password};
-    console.log('data in checkuser'+data); 
     login(data).then((res) => {
       if(res.data === 'found'){
         props.login(username);
-       
-     
        }
        else{
           alert('not found');

@@ -1,6 +1,25 @@
 import React from 'react'
-import '../assets/css/FrontPage.css';
+import '../assets/css/ShoppingCart.css';
+import { useEffect } from 'react';
+import {getCart} from '../Service/Api';
+import { useState } from 'react';
+
 export default function Cart() {
+  const [cart, setCart] = useState([]);
+
+  useEffect(() =>{
+   renderCart();},[]);
+
+  const renderCart = async () =>{
+    console.log('yaham chal');
+    const result = await getCart();
+    setCart(result.data); 
+    console.log(cart);
+    return cart;
+  }
+
+
+
   return (  <div className="shopping-cart text-dark">
   <div className="px-4 px-lg-0">
     <div className="pb-5">
@@ -27,6 +46,21 @@ export default function Cart() {
                   </tr>
                 </thead>
                 <tbody id="products">
+                  {cart.map( (item) =>(
+                    <tr key={item.id}>
+                      <th scope="row" className="border-0">
+                    <div className="p-2">
+                      <img src={process.env.PUBLIC_URL+item.url} alt="" height={40} width={40} className="m-2 img-fluid rounded shadow-sm" />
+                      <div className="ml-3 d-inline-block align-middle">
+                        <h5 className="mb-0"> <a href='/' className="text-dark d-inline-block align-middle" id={item.id}>{item.name}</a></h5>
+                      </div>
+                    </div>
+                    </th>
+                    <td id={item.id}>PKR {item.price}</td>
+                    <td id={item.id}>{item.quantity}</td>
+                    <td><button className="rounded-pill border-1 border-danger" >-</button><button className="fa fa-trash rounded-pill border-warning mx-2" id="${removeID}" onclick="removeItem(${outerID},${nameID})" /><button className="rounded-pill border-1 border-success" onclick="increaseQuantity(${quantityID})">+</button></td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>

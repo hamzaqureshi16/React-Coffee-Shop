@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import '../assets/css/FrontPage.css';
 import { useState } from "react";
-import { addCatalog } from "../Service/Api";
 import  {getCatalog} from '../Service/Api'
+import { SendtoCart } from "../Service/Api";
+import { useNavigate } from "react-router-dom";
 
 
 const menuitemstyle = {
@@ -17,20 +18,25 @@ const menuitemstyle = {
   borderRadius: "0.5rem",
 }; 
 
-
-const BuyNow = () =>{};
-const AddtoCart = () =>{};
-
 export default function Menu() {
   const [ProductCatalog,setProductCatalog] = useState([]);
+  const navigate = useNavigate();
 
+  const BuyNow = async (id) =>{
+    const item = {id:id};
+   await SendtoCart(item);
+    navigate('/cart');
+  };
+  const AddtoCart = async (id) =>{
+    const item = {id:id};
+    await SendtoCart(item);
+  };
+  
   useEffect(() => {
-    console.log("useEffect");
     getProducts()}, []);
 
   const getProducts = async () =>{
     const result = await getCatalog();
-    console.log(result.data);
     setProductCatalog(result.data);
   }
 
@@ -57,7 +63,7 @@ export default function Menu() {
           </div>
           <div className="container">
   <div className="row menu-container">
-    {ProductCatalog.map((item, index) => (
+    {ProductCatalog.map((item) => (
       <div className="col-lg-6 menu-item filter-starters" style={menuitemstyle}>
         <img
           src={process.env.PUBLIC_URL+item.url}

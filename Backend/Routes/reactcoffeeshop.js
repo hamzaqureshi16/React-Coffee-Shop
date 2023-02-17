@@ -1,20 +1,70 @@
 import express from "express";
-import { register,catalog } from "../Models/reactcoffeeshop.js";
+import { register,catalog,cart } from "../Models/reactcoffeeshop.js";
 
 const RegisterRouter = express.Router();
 const LoginRouter = express.Router();
 const CatalogRouter = express.Router();
+const MenuRouter = express.Router();
+const CartRouter = express.Router();
+
+
+
+CartRouter.get('/',async (req,res)=>{
+    const data = await cart.find();
+    if(data!==null){
+        res.json(data);   
+    }
+    else{
+        res.json('not found');
+    }
+})
+
+MenuRouter.post('/',async (req,res) =>{
+    const data = req.body;
+    try {
+        await cart.findOne({id:data.id}).then( async (res) =>{  
+            if(res !== null){
+                res.quantity = res.quantity + 1;
+                res.save();
+                res.json("saved");
+
+            }
+            else{
+                await catalog.findOne({id:data.id}).then((res)=>{
+                    if(res != null){
+                        const newcart = new cart({
+                            id:res.id,
+                            name:res.name,
+                            price:res.price,
+                            url:res.url,
+                            category:res.category,
+                            ingredients:res.ingredients,
+                            quantity:1
+                        })
+                        try {
+                            newcart.save();
+                            res.json("saved");
+                        } catch (error) {
+                            res.json("not saved")
+                        }
+                        
+                    }
+                });
+               
+            }   
+        } )
+        
+    } catch (error) {
+        res.json('error');
+    }
+});
 
 
 CatalogRouter.get('/',async (req,res) =>{
-    //get all the data from the ProductCatalog collection
-    //log the names of all the collections in the DB
-
-    console.log('catalog');
+   
+    
     try {
-        console.log(catalog);
         const data =  await catalog.find();
-        console.log(data);
         res.json(data);
 
     }
@@ -85,5 +135,6 @@ RegisterRouter.post('/', async (req, res) =>{
 export {RegisterRouter};
 export {LoginRouter};
 export {CatalogRouter};
-
+export {MenuRouter};
+export {CartRouter};
 
