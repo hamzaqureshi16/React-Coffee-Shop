@@ -21,3 +21,11 @@ export const SendtoCart = async (Data) =>{
 export const getCart = async () =>{
     return await axios.get(`${url}/cart`);
 }
+
+export const removefromCart = async (id) =>{
+    return await axios.delete(`${url}/remove`,{data:{id:id}});
+}
+
+export const quantity = async (id,action) =>{
+    return await axios.put(`${url}/quantity`,{id:id,action:action});
+}

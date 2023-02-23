@@ -6,8 +6,47 @@ const LoginRouter = express.Router();
 const CatalogRouter = express.Router();
 const MenuRouter = express.Router();
 const CartRouter = express.Router();
+const RemoveRouter = express.Router();
 
 
+RemoveRouter.put('/',   (req,res)=>{
+    
+    const data = req.body;
+    if(data.action === "increase"){
+          cart.findOne({id:data.id}).then( (result) =>{
+            result.quantity = result.quantity + 1;
+            result.save();
+
+            res.json(result);
+        }
+        )
+    }
+    else if(data.action === "decrease"){
+          cart.findOne({id:data.id}).then( (result) =>{
+            if(result.quantity > 1){
+                result.quantity = result.quantity - 1;
+                result.save();
+                res.json(result);
+            }
+            else{
+                res.json('error');
+            }
+        }
+        )
+    }
+})
+
+RemoveRouter.delete('/',async (req, res)=>{
+    const data = req.body;
+    const result =  await cart.findOneAndDelete({id:data.id});
+    if(result !== null){
+        res.json('Successfully removed');
+    }
+    else{
+        res.json('not found');
+    }
+
+});
 
 CartRouter.get('/',async (req,res)=>{
     const data = await cart.find();
@@ -137,4 +176,5 @@ export {LoginRouter};
 export {CatalogRouter};
 export {MenuRouter};
 export {CartRouter};
+export {RemoveRouter};
 

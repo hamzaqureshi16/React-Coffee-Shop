@@ -2,7 +2,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import mongoose, { mongo } from 'mongoose';
 import  express  from "express";
-import {RegisterRouter, LoginRouter, CatalogRouter, MenuRouter, CartRouter} from './Routes/reactcoffeeshop.js';
+import {RegisterRouter, LoginRouter, CatalogRouter, MenuRouter, CartRouter,RemoveRouter} from './Routes/reactcoffeeshop.js';
 
 
 const app = express();
@@ -22,3 +22,5 @@ app.use('/register',RegisterRouter);
 app.use('/catalog',CatalogRouter);
 app.use('/menu',MenuRouter);
 app.use('/cart',CartRouter);
+app.use('/remove',RemoveRouter);
+app.use('/quantity',RemoveRouter);

@@ -21,7 +21,7 @@ export default function Navbar(props) {
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0 ml-auto">
         <li className="nav-item">
-          <Link to='/home' className="nav-link active text-light fs-4" aria-current="page" >Home</Link>
+          <Link to='/' className="nav-link active text-light fs-4" aria-current="page" >Home</Link>
         </li>
         <li className="nav-item">
           <Link to='/about' className="nav-link text-light fs-4">About Us</Link>

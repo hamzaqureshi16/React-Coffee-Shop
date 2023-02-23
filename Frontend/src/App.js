@@ -38,7 +38,7 @@ const handleLogout = () => {
       <Navbar isLoggedIn = {LoggedIn} UserName={UserName} logout = {handleLogout}></Navbar>
       
       <Routes>
-        <Route path='/home' index element={<Home/>}></Route>
+        <Route path='/' index element={<Home/>}></Route>
         <Route path='/reservation' element={<TableReservationForm/>}></Route>
         <Route path='/about' element={<Aboutus/>}></Route>
         <Route path='/menu' element={<Menu/>}></Route>

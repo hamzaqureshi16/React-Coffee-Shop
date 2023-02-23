@@ -1014,8 +1014,9 @@ section {
 }
 
 .menu .menu-content a {
-  padding-right: 10px;
   background: #1a1814;
+  border-radius: 5px;
+  padding: 6px;
   position: relative;
   z-index: 3;
   font-weight: 700;
@@ -1030,8 +1031,9 @@ section {
 .menu .menu-content span {
   background: #1a1814;
   position: relative;
-  z-index: 3;
-  padding: 0 10px;
+  border-radius: 5px;
+  padding: 6px;
+  z-index: 3;  
   font-weight: 600;
   color: #cda45e;
 }

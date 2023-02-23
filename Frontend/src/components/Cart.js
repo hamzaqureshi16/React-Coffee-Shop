@@ -1,21 +1,61 @@
 import React from 'react'
 import '../assets/css/ShoppingCart.css';
 import { useEffect } from 'react';
-import {getCart} from '../Service/Api';
+import {getCart,removefromCart,quantity} from '../Service/Api';
 import { useState } from 'react';
 
 export default function Cart() {
   const [cart, setCart] = useState([]);
+  const [total,setTotal] = useState(0);
 
   useEffect(() =>{
-   renderCart();},[]);
+   renderCart();
+   
+  
+  },[]);
 
   const renderCart = async () =>{
-    console.log('yaham chal');
     const result = await getCart();
     setCart(result.data); 
-    console.log(cart);
-    return cart;
+    CalculateTotal();
+    
+    
+  }
+
+  const CalculateTotal = () =>{
+    let tot = 0;
+    cart.map((item) => {
+      tot = tot + (item.price * item.quantity);
+    })
+    console.log(tot);
+    setTotal(tot);
+  }
+  
+
+  const removeItem = async (id) => {  
+    await removefromCart(id).then(res => console.log(res)); 
+    renderCart(); 
+  }
+
+  const increaseQuantity = async (id) =>{
+    await quantity(id,'increase').then( async (response)=> {
+      console.log(response);}) 
+      renderCart();
+  }
+
+  const decreaseQuantity = async (id) =>{
+    await quantity(id,'decrease').then( async (response)=> {console.log(response) 
+    renderCart();
+  } 
+    );
+  }
+
+  const VerifyCoupon = () =>{
+    
+  }
+
+  const CheckOut = () => {
+
   }
 
 
@@ -58,7 +98,7 @@ export default function Cart() {
                     </th>
                     <td id={item.id}>PKR {item.price}</td>
                     <td id={item.id}>{item.quantity}</td>
-                    <td><button className="rounded-pill border-1 border-danger" >-</button><button className="fa fa-trash rounded-pill border-warning mx-2" id="${removeID}" onclick="removeItem(${outerID},${nameID})" /><button className="rounded-pill border-1 border-success" onclick="increaseQuantity(${quantityID})">+</button></td>
+                    <td><button className="rounded-pill border-1 border-danger" onClick={()=>decreaseQuantity(item.id)} >-</button><button className="fa fa-trash rounded-pill border-warning mx-2" onClick={() =>removeItem(item.id)} /><button className="rounded-pill border-1 border-success" onClick={()=>increaseQuantity(item.id)}>+</button></td>
                     </tr>
                   ))}
                 </tbody>
@@ -75,7 +115,7 @@ export default function Cart() {
               <div className="input-group mb-4 border rounded-pill p-2">
                 <input type="text" placeholder="Apply coupon" aria-describedby="button-addon3" className="form-control border-0" id="couponInput" />
                 <div className="input-group-append border-0">
-                  <button id="couponButton" type="button" className="btn btn-dark px-4 rounded-pill" onclick="verifyCoupon()"><i className="fa fa-gift mr-2" />Apply coupon</button>
+                  <button id="couponButton" type="button" className="btn btn-dark px-4 rounded-pill" onClick={()=>VerifyCoupon()}><i className="fa fa-gift mr-2" />Apply coupon</button>
                 </div>
               </div>
             </div>
@@ -90,21 +130,18 @@ export default function Cart() {
             <div className="p-4" data-repeat="true" aria-hidden="true">
               <p className="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
               <ul className="list-unstyled mb-4">
-                <li className="d-flex justify-content-between py-3 border-bottom"><strong className="text-muted">Order Subtotal </strong>    <div className="tick" data-value={0} data-did-init="setupFlip">
-                    {/* Hide visual content from screenreaders with `aria-hidden` */}
-                    <div data-repeat="true" aria-hidden="true">
-                      <span data-view="flip"><strong id="total" /></span>
-                    </div>
-                  </div>
+                <li className="d-flex justify-content-between py-3 border-bottom"><strong className="text-muted">Order Subtotal </strong>  
+                    <strong>{total}</strong>
+                    
                 </li>
-                <li className="d-flex justify-content-between py-3 border-bottom"><strong className="text-muted">Shipping and handling</strong><strong id="shipping" /></li>
-                <li className="d-flex justify-content-between py-3 border-bottom"><strong className="text-muted">Tax</strong><strong id="tax" /></li>
+                <li className="d-flex justify-content-between py-3 border-bottom"><strong className="text-muted">Shipping and handling</strong><strong id="shipping" >{cart.length}</strong></li>
+                <li className="d-flex justify-content-between py-3 border-bottom"><strong className="text-muted">Tax</strong><strong id="tax" >{total*0.12}</strong></li>
                 <li className="d-flex justify-content-between py-3 border-bottom"><strong className="text-muted">Total</strong>
-                  <h5 className="font-weight-bold" id="grandTotal" />
+                  <h5 className="font-weight-bold" id="grandTotal" >{total}</h5>
                 </li>
                 <input type="radio" style={{width: '20px'}} name="toDeliver" defaultValue="delivery" id="toDeliver" defaultChecked />Delivery
                 <input type="radio" name="toDeliver" style={{width: '20px'}} id="toDeliver" defaultValue="dinein" />Dine in
-              </ul><button type="button" href="#" className="btn btn-dark rounded-pill py-2" onclick="CheckOut()">Procceed to checkout</button>
+              </ul><button type="button" href="#" className="btn btn-dark rounded-pill py-2" onClick={()=>CheckOut()}>Procceed to checkout</button>
             </div>
           </div>
         </div>
