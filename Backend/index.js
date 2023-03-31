@@ -6,7 +6,7 @@ import {RegisterRouter, LoginRouter, CatalogRouter, MenuRouter, CartRouter,Remov
 
 
 const app = express();
-const url = 'mongodb+srv://hamza:IY8SZWJgmPHpi2Py@cluster0.96cge86.mongodb.net/CoffeeShop?retryWrites=true&w=majority';
+const url = '';
 
 
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log("DB connected"));
