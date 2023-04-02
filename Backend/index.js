@@ -9,7 +9,7 @@ const app = express();
 const url = '';
 
 
-mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log("DB connected"));
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log("Connected to the Database"));
 app.listen(3000);
 
 app.use(cors());
